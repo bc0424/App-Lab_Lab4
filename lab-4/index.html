@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<!-- What I'm thinking of working on:
+    -Remaking the website to be more user-friendly
+    -Create 
+
+
+-->
+<head>
+    <meta charset="UTF-8">
+    <title>CoffeeTawk</title>
+    <script type="text/javascript" src="corellation.js"></script>
+    <!-- Putting the script link in the head means that it will load the javascript file first -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+
+
+
+<body>
+
+    <script type="text/javascript">
+            let var1 = [];
+        let var2 = [];
+        // Declared two variable and put them equal to an empty array
+        const addData = function () {
+            // We created a function expression to create two variables 
+            const var1Output = document.getElementById("box1");
+            const var2Output = document.getElementById("box2");
+            // These two variables take references from HTML tags
+            var1.push(document.getElementById('var1').value);
+            var2.push(document.getElementById('var2').value);
+            // You add var1 and var2 into the two separate arrays from above
+            var1Output.innerHTML = var1.join('<br/>');
+            var2Output.innerHTML = var2.join('<br/>');
+            //clear our input fields
+            document.getElementById('var1').value = "";
+            document.getElementById('var2').value = "";
+            document.getElementById('corellation').innerHTML = getPearsonCorrelation(var1, var2).toString();
+            // calculate the correlation between two numbers using the Pearson Correlatoin function
+        }
+        const clearData = () => {var1 = []; var2 =[];}  
+    </script>    
+    <form>
+        
+        <div id="variabledesign1">
+        <label for="display-name"> Variable 1:</label>
+        </div>
+        <input id="var1" type=text>
+        <br />
+        <div id="variabledesign2">
+        <label for="display-name"> Variable 2:</label>
+        </div>
+        <input id="var2" type=text>
+
+        <input type=button onclick="addData()" value="Add Variables" />
+        <input type=submit onclick="clearData()" value="Clear Variables" />
+    </form>
+    <div id="data-table">
+        <h1 id="data">Data Table</h1>
+        <div id=movebox1>
+        <div id="variable1">
+            <p>Variable 1</p>
+            <div id="box1" >
+            <!-- ; style="border:1px solid black;width:150px;height:150px;overflow:auto"> -->
+            </div>
+        </div>
+        </div>
+    </div>
+
+        <br />
+        <div id=movebox2>
+        <div id="variable2">
+            <p>Variable 2</p>
+            <div id="box2" >
+            <!-- ; style="border:1px solid black;width:150px;height:150px;overflow:auto" -->
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div id="result">
+        <h1>Correlation:</h1>
+        <div id="corellation">
+        </div>
+    </div>
+
+</body>
+
+</html>
